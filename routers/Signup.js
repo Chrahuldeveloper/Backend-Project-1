@@ -15,7 +15,7 @@ const hashingUser = (data) => {
 signUpRouter.post("/signup", async (req, res) => {
   try {
     const { Name, age, Phone, location, Profession, Address } = await req.body;
-    const User = new UserModel({
+    const User = await new UserModel({
       Name,
       age,
       Phone,
