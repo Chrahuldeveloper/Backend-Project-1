@@ -9,6 +9,9 @@ const Blog = mongoose.Schema({
     type: String,
     required: true,
   },
+  likes: {
+    type: Number,
+  },
   sections: [
     {
       title: {

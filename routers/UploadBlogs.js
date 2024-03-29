@@ -63,7 +63,7 @@ blogUpload.put("/blogs/:userjwt/:blogid", async (req, res) => {
       res.status(404).json({ error: "Blog not found" });
     }
 
-    const updateBlog = Blogs.findByIdAndUpdate(blogId, blogData, { new: true });
+    await Blogs.findByIdAndUpdate(blogId, blogData, { new: true });
 
     res.status(200).json({ message: "Blog Updated" });
 
