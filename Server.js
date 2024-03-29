@@ -2,7 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = 8080;
-const { signUpRouter, blogUpload } = require("./routers/index");
+const {
+  signUpRouter,
+  blogUpload,
+  blogLikes,
+  blogViews,
+} = require("./routers/index");
 app.use(express.json());
 
 const startServer = async () => {
@@ -21,6 +26,8 @@ const dbconnection = async () => {
 
 app.use("/", signUpRouter);
 app.use("/", blogUpload);
+app.use("/", blogLikes);
+app.use("/", blogViews);
 
 app.listen(PORT, () => {
   startServer();
