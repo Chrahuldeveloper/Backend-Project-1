@@ -40,4 +40,18 @@ blogUpload.post("/blogs/:userjwt", async (req, res) => {
   }
 });
 
+blogUpload.put("/blogs/:userjwt", async (req, res) => {
+  try {
+    const token = req.params.userjwt;
+    const userexits = await UserModel.findById(token);
+    if (!userexits) {
+      res.status(404).json({ error: "User not found" });
+    } else {
+      console.log(userexits);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = { blogUpload };
