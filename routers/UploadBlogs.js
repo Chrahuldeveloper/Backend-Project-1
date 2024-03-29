@@ -50,6 +50,7 @@ blogUpload.put("/blogs/:userjwt/:blogid", async (req, res) => {
   try {
     const token = req.params.userjwt;
     const blogId = req.params.blogid;
+    const blogData = req.body;
 
     const userExits = await UserModel.findById(token);
     const blog = await Blogs.findById(blogId);
@@ -61,6 +62,11 @@ blogUpload.put("/blogs/:userjwt/:blogid", async (req, res) => {
     if (!blog) {
       res.status(404).json({ error: "Blog not found" });
     }
+
+    const updateBlog = Blogs.findByIdAndUpdate(blogId, blogData, { new: true });
+
+    res.status(200).json({ message: "Blog Updated" });
+
     res.send(blog);
   } catch (error) {
     console.log(error);
