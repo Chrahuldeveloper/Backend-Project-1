@@ -12,6 +12,9 @@ const Blog = mongoose.Schema({
   likes: {
     type: Number,
   },
+  views: {
+    type: Number,
+  },
   sections: [
     {
       title: {

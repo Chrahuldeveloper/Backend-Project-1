@@ -1,7 +1,8 @@
 const blogViews = require("express").Router();
 const blogLikes = require("express").Router();
 const Blogs = require("../models/Blog");
-blogViews.get("/blog/views/:userid/:blogid", async (req, res) => {
+
+blogViews.put("/blog/views/:userid/:blogid", async (req, res) => {
   try {
     const blogId = req.params.blogid;
     const userId = req.params.userid;
@@ -16,14 +17,11 @@ blogViews.get("/blog/views/:userid/:blogid", async (req, res) => {
       res.status(404).json({ message: "Blog not found:(" });
     }
 
+    blog.views += 1;
 
-    // const updatedBlog = await Blogs.findByIdAndUpdate(
-    //   blogId,
-    //   { views: updateView },
-    //   { new: true }
-    // );
+    const updatedBlog = await blog.save();
 
-    // res.status(200).send(updatedBlog);
+    console.log(updatedBlog);
   } catch (error) {
     console.log(error);
   }
