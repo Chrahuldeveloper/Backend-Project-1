@@ -25,7 +25,7 @@ const User = mongoose.Schema({
     required: true,
   },
   Reffer: {
-    type: String,
+    type: Number,
   },
 });
 
