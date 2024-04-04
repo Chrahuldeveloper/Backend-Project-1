@@ -24,6 +24,9 @@ const User = mongoose.Schema({
     type: String,
     required: true,
   },
+  Reffer: {
+    type: String,
+  },
 });
 
 const UserModel = mongoose.model("users", User);

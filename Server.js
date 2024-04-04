@@ -7,6 +7,7 @@ const {
   blogUpload,
   blogLikes,
   blogViews,
+  reffer,
 } = require("./routers/index");
 app.use(express.json());
 
@@ -28,6 +29,7 @@ app.use("/", signUpRouter);
 app.use("/", blogUpload);
 app.use("/", blogLikes);
 app.use("/", blogViews);
+app.use("/", reffer);
 
 app.listen(PORT, () => {
   startServer();
